@@ -30,6 +30,10 @@ hum.integer=response.humidity;
  var cityName =document.querySelector('.city')
  var desc =document.querySelector('.desc')
  var temp =document.querySelector('.temp')
+ var wIcon = document.querySelector('.icon')
+ var humid = document.querySelector('.humidity')
+ var wSpeed = document.querySelector('.windSpeed')
+ var uvIndex = document.querySelector('.uvIndex')
 
 button.addEventListener('click',function()
 {
@@ -41,10 +45,35 @@ button.addEventListener('click',function()
        cityName.textContent = data.name;
         var tempValue = data['main']['temp'];
         var descValue = data['weather'][0]['description'];
+        var iconValue = data['weather'][0]['icon'];
+        var theHumidity = data['main']['humidity'];
+        var theWspeed = data['wind']['speed'];
+        var longitude = data['coord']['lon'];
+        var latitude = data['coord']['lat'];
+
+        var iconurl = 'https://openweathermap.org/img/wn/'+iconValue+'@2x.png';
 
         cityName.innerHTML= data.name;
         temp.innerHTML = tempValue;
         desc.innerHTML = descValue;
+        wIcon.src = iconurl;
+        humid.innerHTML = theHumidity;
+        wSpeed.innerHTML = theWspeed;
+
+
+        //call date function
+        theDate();
+
+       // 'http://api.openweathermap.org/data/2.5/uvi?appid=&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial&lat='+latitude+'&lon='+longitude
+
+        return fetch('http://api.openweathermap.org/data/2.5/uvi?appid=51e148a3c279d80fff69d2b12cc9cdb6&lat='+latitude+'&lon='+longitude)
+    })
+    .then(response => response.json())
+    .then(data =>
+        {
+            uvIndex.textContent = data.value;
+
+            uvIndex.innerHTML = data.value;
 
     })
 
@@ -54,7 +83,7 @@ button.addEventListener('click',function()
 });
 
 //Display the date
-function headingDate()
+function theDate()
 {
   // instantiate a moment object
  var NowDate = moment().format("MMMM Do YYYY");
@@ -66,4 +95,4 @@ function headingDate()
   
 
 }
-headingDate();
+

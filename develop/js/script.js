@@ -1,3 +1,4 @@
+ // var for weather day
  var button = document.querySelector('.button')
  var inputValue = document.querySelector('.inputValue')
  var cityName =document.querySelector('.city')
@@ -37,12 +38,15 @@
 
  // funciton to call current weather
 button.addEventListener('click',function weather()
+//fetch to get weather info
 {
  fetch('http://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
 
  .then(response => response.json())
  .then(data => 
     {
+
+        // store information from fetch
        cityName.textContent = data.name;
         var tempValue = data['main']['temp'];
         var descValue = data['weather'][0]['description'];
@@ -54,6 +58,7 @@ button.addEventListener('click',function weather()
 
         var iconurl = 'https://openweathermap.org/img/wn/'+iconValue+'@2x.png';
 
+        // display information on index.html
         cityName.innerHTML= data.name;
         temp.innerHTML = 'Temperature '+tempValue+' Degrees Farenheight';
         desc.innerHTML = descValue;
@@ -99,11 +104,10 @@ button.addEventListener('click',function weather()
 });
 
 
-//api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
-
  // funciton to call five day forecast
  button.addEventListener('click',function()
  {
+     // this fetch pulls the five day forcast
   fetch('http://api.openweathermap.org/data/2.5/forecast?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
  
   .then(response => response.json())
@@ -114,7 +118,6 @@ button.addEventListener('click',function weather()
         var theHumi = data['list'][0]['main']['humidity'];
         var tem = data['list'][0]['main']['temp'];
         var iconValue = data['list'][0]['weather'][0]['icon'];
-        //var datey = data['list'][0]['clouds']['dt_txt'];
 
         var iconurl = 'https://openweathermap.org/img/wn/'+iconValue+'@2x.png';
 
@@ -171,7 +174,7 @@ button.addEventListener('click',function weather()
 });
 
   
-//Display the date
+//function that is used to display the date
 function theDate()
 {
   // instantiate a moment object
@@ -264,6 +267,13 @@ var list = JSON.parse(localStorage.getItem("todolist")) || [];
 
       // When a user clicks a check box then delete the specific content
       $(document).on("click", ".checkbox", function() {
+
+        //Here is where I want to call the weather function while 
+        // at the same time deleting the listed city buy I keep getting error
+        // and have run out of time.
+        // weather()
+
+
         // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
         var toDoNumber = $(this).attr("data-to-do");
 

@@ -4,6 +4,6 @@
 
 ### https://github.com/israel0688/weatherDashboard
 
-### https://israel0688.github.io/weatherDashboard/Develop/index.html
+### https://israel0688.github.io/weatherDashboard/develop/index.html
 
-![alt "screenshot"](https://github.com/israel0688/weatherDashboard/blob/masteDevelop/weatherDashboard.png)
+![alt "screenshot"](https://github.com/israel0688/weatherDashboard/blob/master/develop/weatherDashboard.png)

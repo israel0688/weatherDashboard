@@ -40,7 +40,7 @@
 button.addEventListener('click',function weather()
 //fetch to get weather info
 {
- fetch('http://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
+ fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
 
  .then(response => response.json())
  .then(data => 

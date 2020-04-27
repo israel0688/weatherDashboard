@@ -108,7 +108,7 @@ button.addEventListener('click',function weather()
  button.addEventListener('click',function()
  {
      // this fetch pulls the five day forcast
-  fetch('http://api.openweathermap.org/data/2.5/forecast?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q='+inputValue.value+'&appid=51e148a3c279d80fff69d2b12cc9cdb6&units=imperial')
  
   .then(response => response.json())
   .then(data => 
